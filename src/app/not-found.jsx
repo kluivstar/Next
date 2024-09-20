@@ -5,7 +5,7 @@ const notFound = () => {
   return (
     <div>
         <h1>You're far from home</h1>
-        <Link href="/">Return to Home</Link>
+        <Link href="/">Return Home</Link>
     </div>
   )
 }

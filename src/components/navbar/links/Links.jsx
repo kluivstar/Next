@@ -26,24 +26,27 @@ const links = [
     },
 ];
 
-const Links = ({}) => {
+const Links = () => {
     const [open, setOpen] = useState(false)
     // Temporary
     const session = true
     const isAdmin = true
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.links}>
             {links.map((link) => (
             <NavLink item={link} key={link.title} />
             ))}
-            {session?.user ? (
+            {session ? (
                 <>
-                    {session.user?.isAdmin && <NavLink item={{title: "Admin", path: "/admin"}}/>}
+                    {isAdmin && <NavLink item={{title: "Admin", path: "/admin"}}/>}
+                    <button className={styles.logout}>Logout</button>
+                    {/*
                     <form action={handleLogout}>
                         <button className={styles.logout}>Logout</button>
                     </form>
+                    **/}
                 </>
             ) : (
                 <NavLink item={{title: "Login", path: "/login"}}/>
@@ -58,15 +61,18 @@ const Links = ({}) => {
                 height={30}
                 onClick={()=> setOpen((prev)=> !prev)}
             />
-            
+            **/}
+
+            {/** Mobile Menu */}
+            <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)} >Menu</button>
             {open && (
                 <div className={styles.mobileLinks}>
-                    {links.map((link) =>{
+                    {links.map((link) =>(
                         <NavLink item={link} key={link.title}/>
-                    })}
+                    ))}
                 </div>
             )}
-                **/}
+                
         </div>
     )
 }

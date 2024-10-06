@@ -1,11 +1,12 @@
 "use-client"
+
 import Image from 'next/image'
 import styles from './about.module.css'
 
-export const metadata = {
-    title: "About Page",
-    description: "About Description"
-}
+//export const metadata = {
+    //title: "About Page",
+    //description: "About Description"
+//}
 
 const About = () => {
   return (
@@ -18,7 +19,7 @@ const About = () => {
         <div className={styles.boxes}>
           <div className={styles.box}>
             <h1>10 years +</h1>
-            <p>How long weve doing this</p>
+            <p>How long we've doing this</p>
           </div>
 
           <div className={styles.box}>

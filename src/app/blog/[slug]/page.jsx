@@ -2,7 +2,10 @@ import styles from './singlePostPage.module.css'
 import Image from 'next/image'
 import PostUser from '@/components/postUser/postUser'
 import { Suspense } from 'react'
+import {getPost} from '@/libs/data'
 
+// Fetch Data With API
+{/**
 const getData = async (slug) => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
 
@@ -11,12 +14,15 @@ const getData = async (slug) => {
   } 
   return res.json()
 }
-
+** */}
 const SinglePostPage = async({params}) => {
-
   const {slug} = params
-  const post = await getData(slug)
+  // Fetch Data With API
+ 
+  //const post = await getData(slug)
 
+  // Fetch Data Without An API
+  const post = await getPost(slug)
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -24,11 +30,12 @@ const SinglePostPage = async({params}) => {
       </div>
 
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{post.title}</h1>
+        <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail} >
           <Image src="https://images.pexels.com/photos/262367/pexels-photo-262367.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" width={50} height={50} className={styles.avatar}/>
-          <Suspense fallback={<div>Loading...</div>}>
-            <PostUser userId={post.userId}/></Suspense>
+          {/**If theres a post following component is called */}
+          {post && <Suspense fallback={<div>Loading...</div>}>
+            <PostUser userId={post.userId}/></Suspense>}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.01</span>
@@ -36,7 +43,7 @@ const SinglePostPage = async({params}) => {
           
         </div>
         <div className={styles.content}>
-            {post.body}
+            {post?.body}
           </div>
       </div>
     </div>

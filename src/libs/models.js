@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
+
+import mongoose from 'mongoose';
 
 // Define the user schema
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,    // Username is required
@@ -32,9 +33,7 @@ const UserSchema = new mongoose.Schema({
     },
 }, { timestamps: true }); // Adds `createdAt` and `updatedAt` timestamps automatically
 
-const mongoose = require('mongoose');
-
-const PostSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -63,6 +62,7 @@ const PostSchema = new mongoose.Schema({
 
 
 // Create the user model from the schema
-export const User = mongoose.models.User || mongoose.model('User', UserSchema);
+export const User = mongoose.models.User || mongoose.model('User', userSchema);
 
-export const Post = mongoose.models.Post || mongoose.model('Post', PostSchema);
+// Create the post model from the schema passing "Post" as the name and "userSchema as the schema for the model"
+export const Post = mongoose.models.Post || mongoose.model('Post', postSchema);

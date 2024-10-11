@@ -15,6 +15,16 @@ const getData = async (slug) => {
   return res.json()
 }
 ** */}
+// Dynamic description for post - SEO
+export const generateMetadata = async({params}) => {
+  const {slug} = params
+  const post = await getPost(slug)
+  
+    return {
+      title: post.title,
+      description: post.desc
+    }
+}
 const SinglePostPage = async({params}) => {
   const {slug} = params
   // Fetch Data With API

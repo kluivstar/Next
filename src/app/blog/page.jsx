@@ -3,20 +3,21 @@ import PostCard from '@/components/postCard/postCard'
 import {getPosts} from '@/libs/data'
 
 // Fetch Data With API
-//const getData = async () => {
-    //const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+const getData = async () => {
+    const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}})
 
-    //if(!res.ok){
-      //throw new Error('Something went wrong')
-    //} 
-  //  return res.json()
-//}
-const page = async () => {
+    if(!res.ok){
+      console.log(error)
+      throw new Error('Something went wrong')
+    } 
+    return res.json()
+}
+const BlogPage = async () => {
   // Fetch Data With API
-  //const posts = await getData()
+  const posts = await getData()
 
   // // Fetch Data Without An API
-  const posts = await getPosts()
+  //const posts = await getPosts()
   return (
     <div className={styles.container}>
       {posts.map((post)=> (
@@ -29,4 +30,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default BlogPage

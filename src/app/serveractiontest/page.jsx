@@ -1,11 +1,20 @@
-import { sayHello } from '@/libs/actions'
-import React from 'react'
+import { addPost, deletePost } from "@/libs/actions"
 
 const ServerActionTestPage = () => {
+    
     return (
         <div>
-            <form action={sayHello}>
-                <button>Test me baby</button>
+            <form action={addPost}>
+            <input type="text" name="title" placeholder="title"  className=""/>
+            <input type="text" name="desc" placeholder="desc"  className=""/>
+            <input type="text" name="slug" placeholder="slug"  className=""/>
+            <input type="text" name="userId" placeholder="userId"  className=""/>
+            <button>Create</button>
+            </form>
+            
+            <form action={deletePost}>
+            <input type="text" placeholder="postId"  name="id"/>
+            <button>Delete</button>
             </form>
         </div>
     )

@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
         {/*<ClientSideProviderTest>*/}
           <div className='container'>
             <Navbar/>
-            
             {children}
             <Footer/>
           </div>

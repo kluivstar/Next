@@ -1,12 +1,15 @@
-import { Post } from "@/libs/models"
-import { connectToDb } from "@/libs/utils"
+import { Post } from "@/lib/models"
+import { connectToDb } from "@/lib/utils"
 import { NextResponse } from "next/server"
 
+// Folder structure is a dynamic API route, [slug] indicate route is dynamic and will match any URL segments after api/blog
+
+// Route Handler Functions for API request related to specific blog post id'd by its slug
 export const GET = async(request, {params}) => {
     const {slug} = params
     try {
         connectToDb()
-            const post = await Post.findOne(slug)
+            const post = await Post.findOne({slug})
             return NextResponse.json(post)
     } catch(error){
         throw new Error("Error")

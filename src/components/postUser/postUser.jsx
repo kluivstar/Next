@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './postUserModule.css'
-import { getPosts, getUser } from '@/libs/data'
+import { getPosts, getUser } from '@/lib/data'
 import Image from 'next/image'
 
 // Fetch Data With API

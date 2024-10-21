@@ -1,8 +1,9 @@
-import { addPost, deletePost } from "@/libs/actions"
+import { addPost, deletePost } from "@/lib/actions"
 
 const ServerActionTestPage = () => {
     
     return (
+        // Here form's submission should trigger the addPost function
         <div>
             <form action={addPost}>
             <input type="text" name="title" placeholder="title"  className=""/>

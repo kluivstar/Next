@@ -2,7 +2,7 @@ import styles from './singlePostPage.module.css'
 import Image from 'next/image'
 import PostUser from '@/components/postUser/postUser'
 import { Suspense } from 'react'
-import {getPost} from '@/libs/data'
+import {getPost} from '@/lib/data'
 
 // Fetch Data With API
 
@@ -29,10 +29,10 @@ const SinglePostPage = async({params}) => {
   const {slug} = params
   // Fetch Data With API
  
-  //const post = await getData(slug)
+  const post = await getData(slug)
 
   // Fetch Data Without An API
-  const post = await getPost(slug)
+ // const post = await getPost(slug)
   return (
     <div className={styles.container}>
       {post.img && (

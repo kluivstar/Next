@@ -7,7 +7,7 @@ import { signIn } from 'next-auth/react';
 const LoginPage = () => {
   const handleGithubLogin = async() => {
   
-    signIn("github")
+    await signIn("github")
 }
   return (
     <div className={styles.container}>
